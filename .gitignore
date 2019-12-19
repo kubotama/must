@@ -88,3 +88,9 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# LaTeXの処理で生成されるファイル
+*.aux
+*.out
+*.pdf
+*.toc
