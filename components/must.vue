@@ -26,6 +26,11 @@ export default {
     return {
       mustArea: ''
     }
+  },
+  methods: {
+    clickEscapeSpecialChar() {
+      this.mustArea = '\\#'
+    }
   }
 }
 </script>
