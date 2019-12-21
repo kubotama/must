@@ -27,6 +27,9 @@ export default {
       mustArea: ''
     }
   },
+  mounted() {
+    this.focusMustArea()
+  },
   methods: {
     focusMustArea() {
       this.$refs.mustArea.focus()
