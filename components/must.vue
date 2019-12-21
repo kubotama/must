@@ -27,7 +27,13 @@ export default {
       mustArea: ''
     }
   },
+  mounted() {
+    this.focusMustArea()
+  },
   methods: {
+    focusMustArea() {
+      this.$refs.mustArea.focus()
+    },
     escapeSpecialChar(text) {
       text = text.replace(/\\/g, '\\textbackslash ')
       // eslint-disable-next-line no-useless-escape
@@ -46,6 +52,7 @@ export default {
     },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
+      this.focusMustArea()
     }
   }
 }
