@@ -4,14 +4,26 @@
       id="mustArea"
       ref="mustArea"
       v-model="mustArea"
-      :rows="2"
+      :rows="10"
+      class="must-text-area"
       type="textarea"
-      placeholder="Please input"
+      placeholder="変換する文字列を入力してください"
     >
     </el-input>
-    <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
-      >特殊文字の変換</el-button
-    >
+    <el-row>
+      <span class="language-label">LaTeX:</span>
+      <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
+        >特殊文字の変換</el-button
+      >
+      <el-button>chapter</el-button>
+      <el-button-group>
+        <el-button>section</el-button>
+        <el-button>subsection</el-button>
+        <el-button>subsubsection</el-button>
+      </el-button-group>
+      <el-button>href</el-button>
+      <el-button>脚注</el-button>
+    </el-row>
   </div>
 </template>
 
@@ -57,3 +69,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.must-text-area {
+  margin-bottom: 20pt;
+  border: 2px black solid;
+}
+
+.language-label {
+  margin-right: 15px;
+}
+</style>
