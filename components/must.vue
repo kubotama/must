@@ -15,6 +15,14 @@
       <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
         >特殊文字の変換</el-button
       >
+      <el-button>chapter</el-button>
+      <el-button-group>
+        <el-button>section</el-button>
+        <el-button>subsection</el-button>
+        <el-button>subsubsection</el-button>
+      </el-button-group>
+      <el-button>href</el-button>
+      <el-button>脚注</el-button>
     </el-row>
   </div>
 </template>
