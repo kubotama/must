@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils'
-import Must from '@/components/must.vue'
+import MustUi from '@/components/MustUi.vue'
 
 describe('特殊文字を変換', () => {
   const buttonId = '#escapeSpecialChar'
   let wrapper
   beforeEach(() => {
     wrapper = null
-    wrapper = mount(Must)
+    wrapper = mount(MustUi)
   })
 
   test.each`
