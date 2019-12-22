@@ -1,17 +1,17 @@
 <template>
   <div class="container">
     <div>
-      <Must />
+      <MustUi />
     </div>
   </div>
 </template>
 
 <script>
-import Must from '~/components/must.vue'
+import MustUi from '~/components/MustUi.vue'
 
 export default {
   components: {
-    Must
+    MustUi
   }
 }
 </script>

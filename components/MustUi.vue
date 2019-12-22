@@ -34,6 +34,7 @@ import Input from 'element-ui'
 Vue.use(Input)
 
 export default {
+  name: 'MustUi',
   data() {
     return {
       mustArea: ''
