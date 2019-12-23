@@ -19,7 +19,7 @@ LaTeXでは特殊文字は以下の通りです。
 ^ | \textasciicircum
 ~ | \textasciitilde
 \ | \textbackslash
-# | \\#
+\# | \\#
 $ | \\$
 % | \\%
 & | \\&
