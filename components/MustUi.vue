@@ -22,7 +22,7 @@
         <el-button>subsubsection</el-button>
       </el-button-group>
       <el-button>href</el-button>
-      <el-button>脚注</el-button>
+      <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
     </el-row>
   </div>
 </template>
@@ -65,6 +65,11 @@ export default {
     },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
+      this.focusMustArea()
+    },
+    clickFootnote() {
+      this.mustArea =
+        '\\footnote{' + this.escapeSpecialChar(this.mustArea) + '}'
       this.focusMustArea()
     }
   }
