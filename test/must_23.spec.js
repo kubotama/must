@@ -16,6 +16,7 @@ describe('issue #23', () => {
     ${3} | ${'特殊$文字あり'}  | ${'\\footnote{特殊\\$文字あり}'}
     ${4} | ${'特殊\\文字あり'} | ${'\\footnote{特殊\\textbackslash 文字あり}'}
     ${5} | ${'あい\nう\nえお'} | ${'\\footnote{あい う えお}'}
+    ${6} | ${'あいう\n\nえ\nお'} | ${'\\footnote{あいう え お}'}
   `('$id: $beforeText → $afterText', ({ id, beforeText, afterText }) => {
     wrapper.setData({ mustArea: beforeText })
     wrapper.find(buttonId).trigger('click')
