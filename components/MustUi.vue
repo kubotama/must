@@ -63,13 +63,19 @@ export default {
       text = text.trim()
       return text
     },
+    nlToSpace(text) {
+      text = text.replace(/\n+/g, ' ')
+      return text
+    },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
       this.focusMustArea()
     },
     clickFootnote() {
       this.mustArea =
-        '\\footnote{' + this.escapeSpecialChar(this.mustArea) + '}'
+        '\\footnote{' +
+        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        '}'
       this.focusMustArea()
     }
   }
