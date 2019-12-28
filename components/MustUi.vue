@@ -31,7 +31,9 @@
         <el-button id="btnParagraph" @click="clickHeading('paragraph')"
           >paragraph</el-button
         >
-        <el-button>subparagraph</el-button>
+        <el-button id="btnSubParagraph" @click="clickHeading('subparagraph')"
+          >subparagraph</el-button
+        >
       </el-button-group>
       <el-button>href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>

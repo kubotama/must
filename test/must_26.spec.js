@@ -20,6 +20,8 @@ describe('issue #26', () => {
     ${8}  | ${'#btnSubSubSection'} | ${'あい_うえお'}  | ${'\\subsubsection{あい\\_うえお}'}
     ${9}  | ${'#btnParagraph'}     | ${'特殊文字なし'} | ${'\\paragraph{特殊文字なし}'}
     ${10} | ${'#btnParagraph'}     | ${'あいう^えお'}  | ${'\\paragraph{あいう\\textasciicircum えお}'}
+    ${11} | ${'#btnSubParagraph'}  | ${'特殊文字なし'} | ${'\\subparagraph{特殊文字なし}'}
+    ${12} | ${'#btnSubParagraph'}  | ${'あいうえ\\お'} | ${'\\subparagraph{あいうえ\\textbackslash お}'}
   `(
     '$id: $beforeText → $afterText',
     ({ id, buttonId, beforeText, afterText }) => {
