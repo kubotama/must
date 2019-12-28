@@ -20,6 +20,8 @@
         <el-button>section</el-button>
         <el-button>subsection</el-button>
         <el-button>subsubsection</el-button>
+        <el-button>paragraph</el-button>
+        <el-button>subparagraph</el-button>
       </el-button-group>
       <el-button>href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
