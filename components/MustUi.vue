@@ -15,9 +15,13 @@
       <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
         >特殊文字の変換</el-button
       >
-      <el-button id="btnChapter" @click="clickChapter">chapter</el-button>
+      <el-button id="btnChapter" @click="clickHeading('chapter')"
+        >chapter</el-button
+      >
       <el-button-group>
-        <el-button id="btnSection" @click="clickSection">section</el-button>
+        <el-button id="btnSection" @click="clickHeading('section')"
+          >section</el-button
+        >
         <el-button>subsection</el-button>
         <el-button>subsubsection</el-button>
         <el-button>paragraph</el-button>
@@ -39,7 +43,8 @@ export default {
   name: 'MustUi',
   data() {
     return {
-      mustArea: ''
+      mustArea: '',
+      labelChapter: 'chapter'
     }
   },
   mounted() {
@@ -80,16 +85,11 @@ export default {
         '}'
       this.focusMustArea()
     },
-    clickChapter() {
+    clickHeading(heading) {
       this.mustArea =
-        '\\chapter{' +
-        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
-        '}'
-      this.focusMustArea()
-    },
-    clickSection() {
-      this.mustArea =
-        '\\section{' +
+        '\\' +
+        heading +
+        '{' +
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
       this.focusMustArea()
