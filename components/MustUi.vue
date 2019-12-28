@@ -22,7 +22,9 @@
         <el-button id="btnSection" @click="clickHeading('section')"
           >section</el-button
         >
-        <el-button>subsection</el-button>
+        <el-button id="btnSubSection" @click="clickHeading('subsection')"
+          >subsection</el-button
+        >
         <el-button>subsubsection</el-button>
         <el-button>paragraph</el-button>
         <el-button>subparagraph</el-button>

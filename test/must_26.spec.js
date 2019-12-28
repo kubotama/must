@@ -9,11 +9,13 @@ describe('issue #26', () => {
   })
 
   test.each`
-    id   | buttonId         | beforeText        | afterText
-    ${1} | ${'#btnChapter'} | ${'特殊文字なし'} | ${'\\chapter{特殊文字なし}'}
-    ${2} | ${'#btnChapter'} | ${'あいうえお#'}  | ${'\\chapter{あいうえお\\#}'}
-    ${3} | ${'#btnSection'} | ${'特殊文字なし'} | ${'\\section{特殊文字なし}'}
-    ${4} | ${'#btnSection'} | ${'$あいうえお'}  | ${'\\section{\\$あいうえお}'}
+    id   | buttonId            | beforeText        | afterText
+    ${1} | ${'#btnChapter'}    | ${'特殊文字なし'} | ${'\\chapter{特殊文字なし}'}
+    ${2} | ${'#btnChapter'}    | ${'あいうえお#'}  | ${'\\chapter{あいうえお\\#}'}
+    ${3} | ${'#btnSection'}    | ${'特殊文字なし'} | ${'\\section{特殊文字なし}'}
+    ${4} | ${'#btnSection'}    | ${'$あいうえお'}  | ${'\\section{\\$あいうえお}'}
+    ${5} | ${'#btnSubSection'} | ${'特殊文字なし'} | ${'\\subsection{特殊文字なし}'}
+    ${6} | ${'#btnSubSection'} | ${'あ&いうえお'}  | ${'\\subsection{あ\\&いうえお}'}
   `(
     '$id: $beforeText → $afterText',
     ({ id, buttonId, beforeText, afterText }) => {
