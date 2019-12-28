@@ -18,6 +18,7 @@ describe('issue #23', () => {
     ${5} | ${'あい\nう\nえお'}     | ${'\\footnote{あい う えお}'}
     ${6} | ${'あいう\n\nえ\nお'}   | ${'\\footnote{あいう え お}'}
     ${7} | ${'あい\n#う$\nえお\n'} | ${'\\footnote{あい \\#う\\$ えお}'}
+    ${8} | ${'あいう\tえお'}       | ${'\\footnote{あいう えお}'}
   `('$id: $beforeText → $afterText', ({ id, beforeText, afterText }) => {
     wrapper.setData({ mustArea: beforeText })
     wrapper.find(buttonId).trigger('click')
