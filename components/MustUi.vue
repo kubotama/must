@@ -15,7 +15,7 @@
       <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
         >特殊文字の変換</el-button
       >
-      <el-button>chapter</el-button>
+      <el-button id="btnChapter" @click="clickChapter">chapter</el-button>
       <el-button-group>
         <el-button>section</el-button>
         <el-button>subsection</el-button>
@@ -76,6 +76,13 @@ export default {
     clickFootnote() {
       this.mustArea =
         '\\footnote{' +
+        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        '}'
+      this.focusMustArea()
+    },
+    clickChapter() {
+      this.mustArea =
+        '\\chapter{' +
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
       this.focusMustArea()
