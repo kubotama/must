@@ -15,11 +15,25 @@
       <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
         >特殊文字の変換</el-button
       >
-      <el-button>chapter</el-button>
+      <el-button id="btnChapter" @click="clickHeading('chapter')"
+        >chapter</el-button
+      >
       <el-button-group>
-        <el-button>section</el-button>
-        <el-button>subsection</el-button>
-        <el-button>subsubsection</el-button>
+        <el-button id="btnSection" @click="clickHeading('section')"
+          >section</el-button
+        >
+        <el-button id="btnSubSection" @click="clickHeading('subsection')"
+          >subsection</el-button
+        >
+        <el-button id="btnSubSubSection" @click="clickHeading('subsubsection')"
+          >subsubsection</el-button
+        >
+        <el-button id="btnParagraph" @click="clickHeading('paragraph')"
+          >paragraph</el-button
+        >
+        <el-button id="btnSubParagraph" @click="clickHeading('subparagraph')"
+          >subparagraph</el-button
+        >
       </el-button-group>
       <el-button>href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
@@ -37,7 +51,8 @@ export default {
   name: 'MustUi',
   data() {
     return {
-      mustArea: ''
+      mustArea: '',
+      labelChapter: 'chapter'
     }
   },
   mounted() {
@@ -74,6 +89,15 @@ export default {
     clickFootnote() {
       this.mustArea =
         '\\footnote{' +
+        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        '}'
+      this.focusMustArea()
+    },
+    clickHeading(heading) {
+      this.mustArea =
+        '\\' +
+        heading +
+        '{' +
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
       this.focusMustArea()
