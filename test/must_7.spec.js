@@ -40,6 +40,10 @@ describe('特殊文字を変換', () => {
     ${27} | ${'あいうえお'}    | ${'あいうえお'}
     ${28} | ${'abcdefghijklm'} | ${'abcdefghijklm'}
     ${29} | ${'0123456789'}    | ${'0123456789'}
+    ${30} | ${'a\nb'}          | ${'a\nb'}
+    ${31} | ${'あいう\nabc\n'} | ${'あいう\nabc'}
+    ${32} | ${'abc#\nxyz&\n'}  | ${'abc\\#\nxyz\\&'}
+    ${33} | ${'\n$#&\nあいう'} | ${'\\$\\#\\&\nあいう'}
   `('$id: $beforeTextを$afterTextに変換', ({ id, beforeText, afterText }) => {
     wrapper.setData({ mustArea: beforeText })
     wrapper.find(buttonId).trigger('click')
