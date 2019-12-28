@@ -17,7 +17,7 @@
       >
       <el-button id="btnChapter" @click="clickChapter">chapter</el-button>
       <el-button-group>
-        <el-button>section</el-button>
+        <el-button id="btnSection" @click="clickSection">section</el-button>
         <el-button>subsection</el-button>
         <el-button>subsubsection</el-button>
         <el-button>paragraph</el-button>
@@ -83,6 +83,13 @@ export default {
     clickChapter() {
       this.mustArea =
         '\\chapter{' +
+        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        '}'
+      this.focusMustArea()
+    },
+    clickSection() {
+      this.mustArea =
+        '\\section{' +
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
       this.focusMustArea()
