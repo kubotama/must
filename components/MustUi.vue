@@ -25,7 +25,9 @@
         <el-button id="btnSubSection" @click="clickHeading('subsection')"
           >subsection</el-button
         >
-        <el-button>subsubsection</el-button>
+        <el-button id="btnSubSubSection" @click="clickHeading('subsubsection')"
+          >subsubsection</el-button
+        >
         <el-button>paragraph</el-button>
         <el-button>subparagraph</el-button>
       </el-button-group>
