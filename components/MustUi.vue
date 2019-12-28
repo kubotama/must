@@ -79,7 +79,7 @@ export default {
       return text
     },
     nlToSpace(text) {
-      text = text.replace(/\n+/g, ' ')
+      text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
     clickEscapeSpecialChar() {
