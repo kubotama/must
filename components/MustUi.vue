@@ -35,7 +35,7 @@
           >subparagraph</el-button
         >
       </el-button-group>
-      <el-button>href</el-button>
+      <el-button id="btnHref" @click="clickHref">href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
     </el-row>
   </div>
@@ -44,6 +44,7 @@
 <script>
 import Vue from 'vue'
 import Input from 'element-ui'
+import { JSDOM } from 'jsdom'
 
 Vue.use(Input)
 
@@ -82,6 +83,13 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
+    async getTitle(url, mustUi) {
+      await JSDOM.fromURL(url).then((dom) => {
+        mustUi.mustArea = dom.window.document.getElementsByTagName(
+          'title'
+        )[0].textContent
+      })
+    },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
       this.focusMustArea()
@@ -101,6 +109,10 @@ export default {
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
       this.focusMustArea()
+    },
+    clickHref() {
+      const url = this.mustArea
+      this.getTitle(url, this)
     }
   }
 }
