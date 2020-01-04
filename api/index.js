@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 export default (req, res, next) => {
-  // eslint-disable-next-line no-console
-  console.log('title: ' + req.method)
+  // console.log('header: ' + JSON.stringify(req.headers))
+  console.log('url: ' + JSON.stringify(req.url))
   // res.status(200).end(JSON.stringify({ title: 'Google' }))
   res.writeHead(200, { 'Content-Type': 'application/json' })
   // res.write()
