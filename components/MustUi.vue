@@ -44,7 +44,6 @@
 <script>
 import Vue from 'vue'
 import Input from 'element-ui'
-import { JSDOM } from 'jsdom'
 
 Vue.use(Input)
 
@@ -83,11 +82,10 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
-    async getTitle(url, mustUi) {
-      await JSDOM.fromURL(url).then((dom) => {
-        mustUi.mustArea = dom.window.document.getElementsByTagName(
-          'title'
-        )[0].textContent
+    getTitle(url) {
+      const baseUrl = `${location.protocol}//${location.host}`
+      this.$axios.get(`${baseUrl}/api?url=${url}`).then((response) => {
+        this.mustArea = `\\href{${url}}{${response.data.title}}`
       })
     },
     clickEscapeSpecialChar() {
@@ -112,7 +110,7 @@ export default {
     },
     clickHref() {
       const url = this.mustArea
-      this.getTitle(url, this)
+      this.getTitle(url)
     }
   }
 }
