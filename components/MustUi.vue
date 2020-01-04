@@ -82,11 +82,12 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
-    getTitle(url) {
-      const baseUrl = `${location.protocol}//${location.host}`
-      this.$axios.get(`${baseUrl}/api?url=${url}`).then((response) => {
-        this.mustArea = `\\href{${url}}{${response.data.title}}`
-      })
+    setHref(url) {
+      this.$axios
+        .get(`${location.protocol}//${location.host}/api?url=${url}`)
+        .then((response) => {
+          this.mustArea = `\\href{${url}}{${response.data.title}}`
+        })
     },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
@@ -109,8 +110,7 @@ export default {
       this.focusMustArea()
     },
     clickHref() {
-      const url = this.mustArea
-      this.getTitle(url)
+      this.setHref(this.mustArea)
     }
   }
 }
