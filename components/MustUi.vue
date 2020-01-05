@@ -111,6 +111,7 @@ export default {
     },
     clickHref() {
       this.setHref(this.mustArea)
+      this.focusMustArea()
     }
   }
 }
