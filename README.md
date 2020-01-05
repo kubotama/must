@@ -74,6 +74,14 @@ sub_section_2 | subsection | \subsection{sub\_section\_2}
 見出し\t4 | paragraph | \paragraph{見出し 4}
 \nxyz | subparagraph | \subparagraph{xyz}
 
+### リンク(\href)の作成
+
+LaTeXでwebページを紹介する場合に`\href{url}{title}`を利用します。
+
+テキストエリアにwebページのurlを入力してからhrefのボタンをクリックすると、titleをurlで指定されたwebページのtitleタグから取得して、上の形式を作成します。titleに特殊文字が含まれる場合にはエスケープ処理をします。
+
+たとえば、<https://www.google.co.jp/> を入力してhrefボタンをクリックすると、`\href{https://www.google.co.jp/}{Google}`に変換します。
+
 ## 名称について
 
 mustの名称は、MarkUp Support Toolの頭文字から、です。
