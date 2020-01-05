@@ -86,7 +86,9 @@ export default {
       this.$axios
         .get(`${location.protocol}//${location.host}/api?url=${url}`)
         .then((response) => {
-          this.mustArea = `\\href{${url}}{${response.data.title}}`
+          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
+            response.data.title
+          )}}`
         })
     },
     clickEscapeSpecialChar() {
