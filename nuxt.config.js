@@ -55,6 +55,16 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
-  }
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+        config.node = {
+          fs: 'empty',
+          child_process: 'empty',
+          tls: 'empty',
+          net: 'empty'
+        }
+      }
+    }
+  },
+  serverMiddleware: [{ path: '/api', handler: '~/api/index.js' }]
 }

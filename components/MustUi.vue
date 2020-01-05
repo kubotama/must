@@ -35,7 +35,7 @@
           >subparagraph</el-button
         >
       </el-button-group>
-      <el-button>href</el-button>
+      <el-button id="btnHref" @click="clickHref">href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
     </el-row>
   </div>
@@ -82,6 +82,15 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
+    setHref(url) {
+      this.$axios
+        .get(`${location.protocol}//${location.host}/api?url=${url}`)
+        .then((response) => {
+          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
+            response.data.title
+          )}}`
+        })
+    },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
       this.focusMustArea()
@@ -100,6 +109,10 @@ export default {
         '{' +
         this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
         '}'
+      this.focusMustArea()
+    },
+    clickHref() {
+      this.setHref(this.mustArea)
       this.focusMustArea()
     }
   }
