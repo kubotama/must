@@ -85,15 +85,6 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
-    setHref(url) {
-      this.$axios
-        .get(`${location.protocol}//${location.host}/api?url=${url}`)
-        .then((response) => {
-          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
-            response.data.title
-          )}}`
-        })
-    },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
       this.focusMustArea()
@@ -114,22 +105,26 @@ export default {
         '}'
       this.focusMustArea()
     },
-    clickHref() {
-      this.setHref(this.mustArea)
-      this.focusMustArea()
-    },
-    setHrefFt(url) {
+    getTitle(url, callback) {
       this.$axios
         .get(`${location.protocol}//${location.host}/api?url=${url}`)
         .then((response) => {
-          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
-            response.data.title
-          )}}\\footnote{\\url{${url}}}`
+          this.mustArea = callback(
+            url,
+            this.nlToSpace(this.escapeSpecialChar(response.data.title))
+          )
+          this.focusMustArea()
         })
     },
+    clickHref() {
+      this.getTitle(this.mustArea, (url, title) => {
+        return `\\href{${url}}{${title}}`
+      })
+    },
     clickHrefFt() {
-      this.setHrefFt(this.mustArea)
-      this.focusMustArea()
+      this.getTitle(this.mustArea, (url, title) => {
+        return `\\href{${url}}{${title}}\\footnote{\\url{${url}}}`
+      })
     }
   }
 }
