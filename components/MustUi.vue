@@ -37,6 +37,9 @@
       </el-button-group>
       <el-button id="btnHref" @click="clickHref">href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
+      <el-button id="btnHrefFt" @click="clickHrefFt"
+        >脚注付きのリンク</el-button
+      >
     </el-row>
   </div>
 </template>
@@ -113,6 +116,19 @@ export default {
     },
     clickHref() {
       this.setHref(this.mustArea)
+      this.focusMustArea()
+    },
+    setHrefFt(url) {
+      this.$axios
+        .get(`${location.protocol}//${location.host}/api?url=${url}`)
+        .then((response) => {
+          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
+            response.data.title
+          )}}\\footnote{\\url{${url}}}`
+        })
+    },
+    clickHrefFt() {
+      this.setHrefFt(this.mustArea)
       this.focusMustArea()
     }
   }
