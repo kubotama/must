@@ -5,10 +5,11 @@ import axios from 'axios'
 
 /* eslint-disable no-console */
 export default (req, res, next) => {
-  console.log('url: ' + JSON.stringify(req.url))
-  // eslint-disable-next-line node/no-deprecated-api
-  const targetUrl = url.parse(req.url, true).query.url
-  console.log('target url: ' + targetUrl)
+  console.log(`url: ${JSON.stringify(req.url)}`)
+  const targetUrl = new url.URL(req.url, 'http://localhost').searchParams.get(
+    'url'
+  )
+  console.log(`target url: ${targetUrl}`)
 
   axios.get(targetUrl).then((response) => {
     const body = response.data
