@@ -1,6 +1,7 @@
 import url from 'url'
 import { JSDOM } from 'jsdom'
 import request from 'request'
+import HttpStatus from 'http-status-codes'
 
 /* eslint-disable no-console */
 export default (req, res, next) => {
@@ -17,7 +18,7 @@ export default (req, res, next) => {
     const title = dom.window.document.getElementsByTagName('title')[0]
       .textContent
     console.log(`title: ${title}`)
-    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.writeHead(HttpStatus.OK, { 'Content-Type': 'application/json' })
     res.end(JSON.stringify({ title }))
   })
 }
