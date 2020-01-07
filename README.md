@@ -6,7 +6,9 @@ Nuxt.jsやVue.jsを勉強していて、なにか作りたいと思って作っ�
 
 ## 機能
 
-### 特殊文字の変換
+### LaTeX
+
+#### 特殊文字の変換
 
 LaTeXなどのマークアップ言語では、テキストの中にコマンドを埋め込むため、コマンドの開始を意味する文字、いわゆる特殊文字が必要です。
 たとえばLaTeXの場合は\\がコマンドを開始する文字です。コマンドを開始する文字そのものをテキストの中で参照する場合には、
@@ -29,7 +31,7 @@ _ | \\_
 
 mustは、特殊な文字を含むテキストを、マークアップ言語で決められた特別な書き方に、ボタン一つで変換します。
 
-### 脚注の作成
+#### 脚注の作成
 
 footnoteボタンをクリックすると、LaTeXの脚注の形式に変換します。変換するときに、同時に以下の処理もします。
 
@@ -47,7 +49,7 @@ foot_note_2 | \footnote{foot\\_note\\_2}
 脚注\t4 | \footnote{脚注 4}
 \nxyz | \footnote{xyz}
 
-### 見出しの作成
+#### 見出しの作成
 
 以下のボタンをクリックすると、LaTeXの見出しの形式に変換します。
 
@@ -74,13 +76,28 @@ sub_section_2 | subsection | \subsection{sub\_section\_2}
 見出し\t4 | paragraph | \paragraph{見出し 4}
 \nxyz | subparagraph | \subparagraph{xyz}
 
-### リンク(\href)の作成
+#### リンク(\href)の作成
 
 LaTeXでwebページを紹介する場合に`\href{url}{title}`を利用します。
 
 テキストエリアにwebページのurlを入力してからhrefのボタンをクリックすると、titleをurlで指定されたwebページのtitleタグから取得して、上の形式を作成します。titleに特殊文字が含まれる場合にはエスケープ処理をします。
 
 たとえば、<https://www.google.co.jp/> を入力してhrefボタンをクリックすると、`\href{https://www.google.co.jp/}{Google}`に変換します。
+
+#### 脚注付きのリンク
+
+\\hrefでリンクを作成した場合、PDFファイルを画面に表示したときにはリンクにカーソルを当てるとリンク先のアドレスが表示されますが、
+印刷してしまうとリンク先のアドレスを確認することができなくなってしまいます。
+リンク先を脚注として表示することで、印刷してもリンク先が確認できるようになります。
+
+リンク先のアドレス(URL)と、そのwebページのタイトル(title)では、URLから`\href{URL}{title}\footnote{\url{url}}`です。
+
+たとえば、Googleの場合は、
+テキストエリアにwebページのURL、<https://www.google.co.jp/> を入力して、
+「脚注付きのリンク」ボタンをクリックすると、テキストエリアに `\href{https://www.google.co.jp/}{Google}\footnote{\url{https://www.google.co.jp/}}`と表示します。
+これをLaTeXで処理した結果が、以下の画像です。
+
+![脚注付きのリンク](/work/footnote_href.png)
 
 ## 名称について
 

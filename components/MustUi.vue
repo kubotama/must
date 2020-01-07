@@ -37,6 +37,9 @@
       </el-button-group>
       <el-button id="btnHref" @click="clickHref">href</el-button>
       <el-button id="btnFootnote" @click="clickFootnote">脚注</el-button>
+      <el-button id="btnHrefFt" @click="clickHrefFt"
+        >脚注付きのリンク</el-button
+      >
     </el-row>
   </div>
 </template>
@@ -82,15 +85,6 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
-    setHref(url) {
-      this.$axios
-        .get(`${location.protocol}//${location.host}/api?url=${url}`)
-        .then((response) => {
-          this.mustArea = `\\href{${url}}{${this.escapeSpecialChar(
-            response.data.title
-          )}}`
-        })
-    },
     clickEscapeSpecialChar() {
       this.mustArea = this.escapeSpecialChar(this.mustArea)
       this.focusMustArea()
@@ -111,9 +105,26 @@ export default {
         '}'
       this.focusMustArea()
     },
+    getTitle(url, callback) {
+      this.$axios
+        .get(`${location.protocol}//${location.host}/api?url=${url}`)
+        .then((response) => {
+          this.mustArea = callback(
+            url,
+            this.nlToSpace(this.escapeSpecialChar(response.data.title))
+          )
+          this.focusMustArea()
+        })
+    },
     clickHref() {
-      this.setHref(this.mustArea)
-      this.focusMustArea()
+      this.getTitle(this.mustArea, (url, title) => {
+        return `\\href{${url}}{${title}}`
+      })
+    },
+    clickHrefFt() {
+      this.getTitle(this.mustArea, (url, title) => {
+        return `\\href{${url}}{${title}}\\footnote{\\url{${url}}}`
+      })
     }
   }
 }
