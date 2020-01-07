@@ -1,7 +1,8 @@
 import url from 'url'
 import { JSDOM } from 'jsdom'
-import request from 'request'
+// import request from 'request'
 import HttpStatus from 'http-status-codes'
+import axios from 'axios'
 
 /* eslint-disable no-console */
 export default (req, res, next) => {
@@ -10,10 +11,20 @@ export default (req, res, next) => {
   const targetUrl = url.parse(req.url, true).query.url
   console.log('target url: ' + targetUrl)
 
-  request(targetUrl, (e, response, body) => {
-    if (e) {
-      console.error(e)
-    }
+  // request(targetUrl, (e, response, body) => {
+  //   if (e) {
+  //     console.error(e)
+  //   }
+  //   const dom = new JSDOM(body)
+  //   const title = dom.window.document.getElementsByTagName('title')[0]
+  //     .textContent
+  //   console.log(`title: ${title}`)
+  //   res.writeHead(HttpStatus.OK, { 'Content-Type': 'application/json' })
+  //   res.end(JSON.stringify({ title }))
+  // })
+  axios.get(targetUrl).then((response) => {
+    const body = response.data
+
     const dom = new JSDOM(body)
     const title = dom.window.document.getElementsByTagName('title')[0]
       .textContent
