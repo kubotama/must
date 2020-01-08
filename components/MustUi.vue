@@ -11,8 +11,14 @@
     >
     </el-input>
     <el-row>
+      <span class="language-label">共通:</span>
+      <el-button id="btnTitle" @click="clickTitle">タイトル</el-button>
+    </el-row>
+    <el-row>
       <span class="language-label">LaTeX:</span>
-      <el-button id="escapeSpecialChar" v-on:click="clickEscapeSpecialChar"
+      <el-button
+        id="escapeSpecialCharLatex"
+        v-on:click="clickescapeSpecialCharLatex"
         >特殊文字の変換</el-button
       >
       <el-button id="btnChapter" @click="clickHeading('chapter')"
@@ -65,7 +71,7 @@ export default {
     focusMustArea() {
       this.$refs.mustArea.focus()
     },
-    escapeSpecialChar(text) {
+    escapeSpecialCharLatex(text) {
       text = text.replace(/\\/g, '\\textbackslash ')
       // eslint-disable-next-line no-useless-escape
       text = text.replace(/#/g, '\\#')
@@ -85,14 +91,14 @@ export default {
       text = text.replace(/[\n\t]+/g, ' ')
       return text
     },
-    clickEscapeSpecialChar() {
-      this.mustArea = this.escapeSpecialChar(this.mustArea)
+    clickescapeSpecialCharLatex() {
+      this.mustArea = this.escapeSpecialCharLatex(this.mustArea)
       this.focusMustArea()
     },
     clickFootnote() {
       this.mustArea =
         '\\footnote{' +
-        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        this.nlToSpace(this.escapeSpecialCharLatex(this.mustArea)) +
         '}'
       this.focusMustArea()
     },
@@ -101,7 +107,7 @@ export default {
         '\\' +
         heading +
         '{' +
-        this.nlToSpace(this.escapeSpecialChar(this.mustArea)) +
+        this.nlToSpace(this.escapeSpecialCharLatex(this.mustArea)) +
         '}'
       this.focusMustArea()
     },
@@ -109,21 +115,25 @@ export default {
       this.$axios
         .get(`${location.protocol}//${location.host}/api?url=${url}`)
         .then((response) => {
-          this.mustArea = callback(
-            url,
-            this.nlToSpace(this.escapeSpecialChar(response.data.title))
-          )
+          this.mustArea = callback(url, this.nlToSpace(response.data.title))
           this.focusMustArea()
         })
     },
     clickHref() {
       this.getTitle(this.mustArea, (url, title) => {
-        return `\\href{${url}}{${title}}`
+        return `\\href{${url}}{${this.escapeSpecialCharLatex(title)}}`
       })
     },
     clickHrefFt() {
       this.getTitle(this.mustArea, (url, title) => {
-        return `\\href{${url}}{${title}}\\footnote{\\url{${url}}}`
+        return `\\href{${url}}{${this.escapeSpecialCharLatex(
+          title
+        )}}\\footnote{\\url{${url}}}`
+      })
+    },
+    clickTitle() {
+      this.getTitle(this.mustArea, (url, title) => {
+        return title
       })
     }
   }
