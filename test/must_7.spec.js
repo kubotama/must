@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import MustUi from '@/components/MustUi.vue'
 
 describe('特殊文字を変換', () => {
-  const buttonId = '#escapeSpecialChar'
+  const buttonId = '#escapeSpecialCharLatex'
   let wrapper
   beforeEach(() => {
     wrapper = null
