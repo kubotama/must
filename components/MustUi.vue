@@ -143,7 +143,9 @@ export default {
       })
     },
     escapeSpecialCharMd(text) {
+      text = text.replace(/\\/g, '\\\\')
       text = text.replace(/\*/g, '\\*')
+      text = text.replace(/_/g, '\\_')
       return text
     },
     clickEscapeSpecialCharMd() {
