@@ -47,6 +47,12 @@
         >脚注付きのリンク</el-button
       >
     </el-row>
+    <el-row>
+      <span class="language-label">Markdown:</span>
+      <el-button id="btnEscapeSpecialCharMd" @click="clickEscapeSpecialCharMd"
+        >特殊文字の変換</el-button
+      >
+    </el-row>
   </div>
 </template>
 
@@ -135,6 +141,27 @@ export default {
       this.getTitle(this.mustArea, (url, title) => {
         return title
       })
+    },
+    escapeSpecialCharMd(text) {
+      text = text.replace(/\\/g, '\\\\')
+      text = text.replace(/\*/g, '\\*')
+      text = text.replace(/_/g, '\\_')
+      text = text.replace(/`/g, '\\`')
+      text = text.replace(/#/g, '\\#')
+      text = text.replace(/\+/g, '\\+')
+      text = text.replace(/-/g, '\\-')
+      text = text.replace(/\./g, '\\.')
+      text = text.replace(/!/g, '\\!')
+      text = text.replace(/\{/g, '\\{')
+      text = text.replace(/\}/g, '\\}')
+      text = text.replace(/\[/g, '\\[')
+      text = text.replace(/\]/g, '\\]')
+      text = text.replace(/\(/g, '\\(')
+      text = text.replace(/\)/g, '\\)')
+      return text
+    },
+    clickEscapeSpecialCharMd() {
+      this.mustArea = this.escapeSpecialCharMd(this.mustArea)
     }
   }
 }
