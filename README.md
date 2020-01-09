@@ -111,7 +111,7 @@ webページのURLから`\href{URL}{title}を作成します。
 
 テキストエリアにwebページのURLを入力してからhrefのボタンをクリックすると、URLで指定されたwebページのtitleタグから取得したタイトルから、上の形式を作成します。titleに特殊文字が含まれる場合にはエスケープ処理をします。
 
-たとえば、<https://www.google.co.jp/> を入力してhrefボタンをクリックすると、`\href{https://www.google.co.jp/}{Google}`に変換します。
+たとえば、`https://www.google.co.jp/`を入力してhrefボタンをクリックすると、`\href{https://www.google.co.jp/}{Google}`に変換します。
 
 ### 脚注付きのリンク
 
@@ -134,6 +134,12 @@ webページのURLから`\href{URL}{title}を作成します。
 Markdownの特殊文字として、以下の文字がテキストエリアのテキストに含まれている場合には、特殊文字の直前に\\(バックスラッシュ)を追加します。
 
 ``\*_`#+-.!{}[]()``
+
+### リンクの作成
+
+webページのURLから、[title](URL)を作成します。titleは指定されたwebページのtitleタグから取得します。
+
+たとえば`https://www.google.co.jp`を指定して、「リンク」ボタンをクリックすると、`[Google](http://www.google.co.jp)`に変換されます。
 
 ## 使い方
 

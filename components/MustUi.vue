@@ -52,6 +52,7 @@
       <el-button id="btnEscapeSpecialCharMd" @click="clickEscapeSpecialCharMd"
         >特殊文字の変換</el-button
       >
+      <el-button id="btnLinkMd" @click="clickLinkMd">リンク</el-button>
     </el-row>
   </div>
 </template>
@@ -163,6 +164,11 @@ export default {
     clickEscapeSpecialCharMd() {
       this.mustArea = this.escapeSpecialCharMd(this.mustArea)
       this.focusMustArea()
+    },
+    clickLinkMd() {
+      this.getTitle(this.mustArea, (url, title) => {
+        return `[${this.escapeSpecialCharMd(title)}](${url})`
+      })
     }
   }
 }
