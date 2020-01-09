@@ -163,6 +163,7 @@ export default {
     },
     clickEscapeSpecialCharMd() {
       this.mustArea = this.escapeSpecialCharMd(this.mustArea)
+      this.focusMustArea()
     },
     clickLinkMd() {
       this.getTitle(this.mustArea, (url, title) => {
