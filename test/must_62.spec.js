@@ -34,4 +34,19 @@ describe('issue #62: Markdownの特殊文字をエスケープ処理', () => {
       expect(wrapper.vm.mustArea).toBe(afterText)
     }
   )
+
+  test.each`
+    id   | beforeText    | afterText
+    ${1} | ${'**'}       | ${'\\*\\*'}
+    ${2} | ${'*!'}       | ${'\\*\\!'}
+    ${3} | ${'a*'}       | ${'a\\*'}
+    ${4} | ${'abc**xyz'} | ${'abc\\*\\*xyz'}
+  `(
+    '$id: 特殊文字2文字: $beforeText -> $afterText',
+    ({ id, beforeText, afterText }) => {
+      wrapper.setData({ mustArea: beforeText })
+      wrapper.find(buttonId).trigger('click')
+      expect(wrapper.vm.mustArea).toBe(afterText)
+    }
+  )
 })
