@@ -162,6 +162,7 @@ export default {
     },
     clickEscapeSpecialCharMd() {
       this.mustArea = this.escapeSpecialCharMd(this.mustArea)
+      this.focusMustArea()
     }
   }
 }
