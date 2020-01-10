@@ -67,8 +67,7 @@ export default {
   name: 'MustUi',
   data() {
     return {
-      mustArea: '',
-      labelChapter: 'chapter'
+      mustArea: ''
     }
   },
   mounted() {
