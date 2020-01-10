@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <MustUi />
-    </div>
+    <MustUi />
   </div>
 </template>
 
