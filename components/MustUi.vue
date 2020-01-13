@@ -39,7 +39,6 @@
 
 <script>
 import Vue from 'vue'
-// import { mapState } from 'vuex'
 import Input from 'element-ui'
 
 Vue.use(Input)
@@ -52,28 +51,11 @@ export default {
     }
   },
   computed: {
-    // ...mapState('text', ['resultText'])
     resultText() {
       return this.$store.state.text.resultText
     }
   },
   methods: {
-    escapeSpecialCharLatex(text) {
-      text = text.replace(/\\/g, '\\textbackslash ')
-      // eslint-disable-next-line no-useless-escape
-      text = text.replace(/#/g, '\\#')
-      text = text.replace(/\$/g, '\\$')
-      text = text.replace(/%/g, '\\%')
-      text = text.replace(/&/g, '\\&')
-      text = text.replace(/~/g, '\\textasciitilde ')
-      text = text.replace(/_/g, '\\_')
-      text = text.replace(/\^/g, '\\textasciicircum ')
-      text = text.replace(/{/g, '\\{')
-      text = text.replace(/}/g, '\\}')
-
-      text = text.trim()
-      return text
-    },
     clickescapeSpecialCharLatex() {
       this.mustArea = this.escapeSpecialCharLatex(this.mustArea)
     }
