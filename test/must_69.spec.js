@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import MustUi from '@/components/MustUi.vue'
 
+// 画面の要素の存在を確認
 describe('issue #69: vuexへの移行', () => {
   // const buttonId = '#escapeSpecialCharLatex'
   let wrapper
