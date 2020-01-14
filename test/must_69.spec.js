@@ -17,8 +17,8 @@ describe('issue #69: vuexへの移行', () => {
     ${1} | ${'#btnEscapeSpecialCharLatex'}
     ${2} | ${'#mustArea'}
     ${3} | ${'#resultText'}
-  `('$id: $elementIdの存在を確認', ({ id, elementId }) => {
-    expect(wrapper.find(elementId)).toBeDefined()
+  `('$id: $elementIdが表示されていることを確認', ({ id, elementId }) => {
+    expect(wrapper.find(elementId).isVisible()).toBeTruthy()
   })
 })
 
