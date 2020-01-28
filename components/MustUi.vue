@@ -52,7 +52,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('resultText', ['resultText'])
+    ...mapGetters('text', ['resultText'])
   },
   methods: {
     clickescapeSpecialCharLatex() {

@@ -26,7 +26,7 @@ describe('issue #69: vuexへの移行', () => {
     }
     store = new Vuex.Store({
       modules: {
-        resultText: storeMock
+        text: storeMock
       }
     })
     wrapper = null
