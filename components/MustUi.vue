@@ -39,6 +39,7 @@
 
 <script>
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import Input from 'element-ui'
 
 Vue.use(Input)
@@ -51,9 +52,7 @@ export default {
     }
   },
   computed: {
-    resultText() {
-      return this.$store.state.text.resultText
-    }
+    ...mapGetters('resultText', ['resultText'])
   },
   methods: {
     clickescapeSpecialCharLatex() {

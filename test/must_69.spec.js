@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import { mount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import * as text from '@/store/text'
 import MustUi from '@/components/MustUi.vue'
 
@@ -14,12 +14,23 @@ localVue.use(Vuex)
 // 画面の要素の存在を確認
 describe('issue #69: vuexへの移行', () => {
   // const buttonId = '#escapeSpecialCharLatex'
+  let storeMock
+  let store
   let wrapper
   beforeEach(() => {
-    wrapper = null
-    wrapper = mount(MustUi, {
-      mocks: { $store: { state: { text: { resultText: '' } } } }
+    storeMock = {
+      namespaced: true,
+      getters: {
+        resultText: () => 'abc'
+      }
+    }
+    store = new Vuex.Store({
+      modules: {
+        resultText: storeMock
+      }
     })
+    wrapper = null
+    wrapper = shallowMount(MustUi, { store, localVue })
   })
 
   test.each`
