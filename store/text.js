@@ -3,7 +3,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-  set(state, text) {
-    state.resultText = text
-  }
+  set: (state, { text }) => (state.resultText = text)
+}
+
+export const getters = {
+  resultText: (state) => state.resultText
 }
