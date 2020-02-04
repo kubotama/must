@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import * as text from '@/store/text'
+import * as mustUi from '~/store/mustUi'
 import MustUi from '@/components/MustUi.vue'
 
 const localVue = createLocalVue()
@@ -20,7 +20,7 @@ describe('MustUi.vue', () => {
     }
     store = new Vuex.Store({
       modules: {
-        text: storeMock
+        mustUi: storeMock
       }
     })
     wrapper = null
@@ -37,10 +37,10 @@ describe('MustUi.vue', () => {
   })
 })
 
-describe('store/text.js', () => {
+describe('store/mustUi.js', () => {
   let store
   beforeEach(() => {
-    store = new Vuex.Store(text)
+    store = new Vuex.Store(mustUi)
   })
 
   describe('getters', () => {

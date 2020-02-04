@@ -52,7 +52,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('text', ['resultText'])
+    ...mapGetters('mustUi', ['resultText'])
   },
   methods: {
     clickescapeSpecialCharLatex() {
