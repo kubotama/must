@@ -15,9 +15,9 @@
     </el-row>
     <el-row>
       <el-input
-        id="mustArea"
-        ref="mustArea"
-        v-model="mustArea"
+        id="inputText"
+        ref="inputText"
+        v-model="inputText"
         rows="10"
         cols="50"
         class="must-text-area"
@@ -48,7 +48,7 @@ export default {
   name: 'MustUi',
   data() {
     return {
-      mustArea: ''
+      inputText: ''
     }
   },
   computed: {
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     clickescapeSpecialCharLatex() {
-      this.mustArea = this.escapeSpecialCharLatex(this.mustArea)
+      this.inputText = this.escapeSpecialCharLatex(this.inputText)
     }
   }
 }

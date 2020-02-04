@@ -30,7 +30,7 @@ describe('MustUi.vue', () => {
   test.each`
     id   | elementId
     ${1} | ${'#btnEscapeSpecialCharLatex'}
-    ${2} | ${'#mustArea'}
+    ${2} | ${'#inputText'}
     ${3} | ${'#resultText'}
   `('$id: $elementIdが表示されていることを確認', ({ id, elementId }) => {
     expect(wrapper.find(elementId).isVisible()).toBeTruthy()
