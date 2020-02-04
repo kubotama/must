@@ -44,7 +44,7 @@ describe('store/mustUi.js', () => {
   })
 
   describe('getters', () => {
-    test('テキストの値を取得', () => {
+    test('formattedText', () => {
       store.replaceState({ formattedText: 'abc' })
       expect(store.getters.formattedText).toBe('abc')
     })
