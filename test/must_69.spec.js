@@ -15,7 +15,7 @@ describe('MustUi.vue', () => {
     storeMock = {
       namespaced: true,
       getters: {
-        resultText: () => ''
+        formattedText: () => ''
       }
     }
     store = new Vuex.Store({
@@ -31,7 +31,7 @@ describe('MustUi.vue', () => {
     id   | elementId
     ${1} | ${'#btnEscapeSpecialCharLatex'}
     ${2} | ${'#inputText'}
-    ${3} | ${'#resultText'}
+    ${3} | ${'#formattedText'}
   `('$id: $elementIdが表示されていることを確認', ({ id, elementId }) => {
     expect(wrapper.find(elementId).isVisible()).toBeTruthy()
   })
@@ -45,8 +45,8 @@ describe('store/mustUi.js', () => {
 
   describe('getters', () => {
     test('テキストの値を取得', () => {
-      store.replaceState({ resultText: 'abc' })
-      expect(store.getters.resultText).toBe('abc')
+      store.replaceState({ formattedText: 'abc' })
+      expect(store.getters.formattedText).toBe('abc')
     })
   })
 })

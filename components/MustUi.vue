@@ -2,8 +2,8 @@
   <div>
     <el-row>
       <el-input
-        id="resultText"
-        v-model="resultText"
+        id="formattedText"
+        v-model="formattedText"
         rows="10"
         cols="50"
         class="must-text-area"
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('mustUi', ['resultText'])
+    ...mapGetters('mustUi', ['formattedText'])
   },
   methods: {
     clickescapeSpecialCharLatex() {

@@ -1,11 +1,11 @@
 export const state = () => ({
-  resultText: ''
+  formattedText: ''
 })
 
 export const mutations = {
-  set: (state, { text }) => (state.resultText = text)
+  set: (state, { text }) => (state.formattedText = text)
 }
 
 export const getters = {
-  resultText: (state) => state.resultText
+  formattedText: (state) => state.formattedText
 }
