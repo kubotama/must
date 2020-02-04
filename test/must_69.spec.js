@@ -29,7 +29,7 @@ describe('MustUi.vue', () => {
 
   test.each`
     id   | elementId
-    ${1} | ${'#btnEscapeSpecialCharLatex'}
+    ${1} | ${'#btnEscapeLatex'}
     ${2} | ${'#inputText'}
     ${3} | ${'#formattedText'}
   `('$id: $elementIdが表示されていることを確認', ({ id, elementId }) => {

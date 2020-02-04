@@ -26,9 +26,7 @@
     </el-row>
     <el-row>
       <span class="language-label">LaTeX:</span>
-      <el-button
-        id="btnEscapeSpecialCharLatex"
-        v-on:click="clickescapeSpecialCharLatex"
+      <el-button id="btnEscapeLatex" v-on:click="clickescapeSpecialCharLatex"
         >特殊文字の変換</el-button
       >
     </el-row>
