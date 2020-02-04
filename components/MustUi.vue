@@ -3,7 +3,6 @@
     <el-row>
       <el-input
         id="resultText"
-        ref="resultText"
         v-model="resultText"
         rows="10"
         cols="50"
@@ -16,7 +15,6 @@
     <el-row>
       <el-input
         id="inputText"
-        ref="inputText"
         v-model="inputText"
         rows="10"
         cols="50"
