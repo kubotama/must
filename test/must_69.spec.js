@@ -6,6 +6,11 @@ import MustUi from '@/components/MustUi.vue'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
+let action
+const testedAction = (context = {}, payload = {}) => {
+  return mustUi.actions[action](context, payload)
+}
+
 // 画面の要素の存在を確認
 describe('MustUi.vue', () => {
   let storeMock
@@ -47,6 +52,19 @@ describe('store/mustUi.js', () => {
     test('formattedText', () => {
       store.replaceState({ formattedText: 'abc' })
       expect(store.getters.formattedText).toBe('abc')
+    })
+  })
+
+  describe('actions', () => {
+    let commit
+    beforeEach(() => {
+      commit = store.commit
+    })
+    test('updateTest', () => {
+      expect(store.getters.formattedText).toBe('')
+      action = 'updateText'
+      testedAction({ commit }, 'xyz')
+      expect(store.getters.formattedText).toBe('xyz')
     })
   })
 })
