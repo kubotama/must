@@ -14,5 +14,9 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
   ],
-  coveragePathIgnorePatterns: ['<rootDir>/pages/sample']
+  coveragePathIgnorePatterns: [
+    '<rootDir>/pages/sample',
+    '<rootDir>/pages/index.vue',
+    '<rootDir>/components/Page.vue'
+  ]
 }
