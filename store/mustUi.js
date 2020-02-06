@@ -16,7 +16,18 @@ export const actions = {
   },
   escapeLatex({ commit, state }) {
     let text = state.formattedText
+    text = text.replace(/\\/g, '\\textbackslash ')
     text = text.replace(/#/g, '\\#')
+    text = text.replace(/\$/g, '\\$')
+    text = text.replace(/%/g, '\\%')
+    text = text.replace(/&/g, '\\&')
+    text = text.replace(/~/g, '\\textasciitilde ')
+    text = text.replace(/_/g, '\\_')
+    text = text.replace(/\^/g, '\\textasciicircum ')
+    text = text.replace(/{/g, '\\{')
+    text = text.replace(/}/g, '\\}')
+
+    text = text.trim()
     commit('updateText', { text })
   }
 }
