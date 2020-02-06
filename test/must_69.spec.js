@@ -37,7 +37,7 @@ describe('MustUi.vue', () => {
     ${1} | ${'#btnEscapeLatex'}
     ${2} | ${'#inputText'}
     ${3} | ${'#formattedText'}
-  `('$id: $elementIdが表示されていることを確認', ({ id, elementId }) => {
+  `('$id: $elementIdが表示されている', ({ id, elementId }) => {
     expect(wrapper.find(elementId).isVisible()).toBeTruthy()
   })
 })
