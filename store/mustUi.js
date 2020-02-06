@@ -13,5 +13,10 @@ export const getters = {
 export const actions = {
   updateText({ commit, state }, text) {
     commit('updateText', { text })
+  },
+  escapeLatex({ commit, state }) {
+    let text = state.formattedText
+    text = text.replace(/#/g, '\\#')
+    commit('updateText', { text })
   }
 }

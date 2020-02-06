@@ -66,6 +66,16 @@ describe('store/mustUi.js', () => {
       testedAction({ commit }, 'xyz')
       expect(store.getters.formattedText).toBe('xyz')
     })
+    test.each`
+      id   | preText | postText
+      ${1} | ${'#'}  | ${'\\#'}
+    `('escapeLatex', ({ id, preText, postText }) => {
+      store.replaceState({ formattedText: preText })
+      action = 'escapeLatex'
+      const state = store.state
+      testedAction({ commit, state })
+      expect(store.getters.formattedText).toBe(postText)
+    })
   })
 })
 
