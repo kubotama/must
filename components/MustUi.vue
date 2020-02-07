@@ -26,9 +26,9 @@
     </el-row>
     <el-row>
       <span class="language-label">LaTeX:</span>
-      <el-button id="btnEscapeLatex" v-on:click="clickescapeSpecialCharLatex"
-        >特殊文字の変換</el-button
-      >
+      <button id="btnEscapeLatex" @click="clickEscapeLatex()">
+        特殊文字の変換
+      </button>
     </el-row>
   </div>
 </template>
@@ -51,8 +51,8 @@ export default {
     ...mapGetters('mustUi', ['formattedText'])
   },
   methods: {
-    clickescapeSpecialCharLatex() {
-      this.inputText = this.escapeSpecialCharLatex(this.inputText)
+    clickEscapeLatex() {
+      this.$store.dispatch('mustUi/updateText', this.inputText)
     }
   }
 }

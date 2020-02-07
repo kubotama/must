@@ -11,7 +11,7 @@ export const getters = {
 }
 
 export const actions = {
-  updateText({ commit, state }, text) {
+  updateText({ commit }, text) {
     commit('updateText', { text })
   },
   escapeLatex({ commit, state }) {

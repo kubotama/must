@@ -40,6 +40,12 @@ describe('MustUi.vue', () => {
   `('$id: $elementIdが表示されている', ({ id, elementId }) => {
     expect(wrapper.find(elementId).isVisible()).toBeTruthy()
   })
+  test('click', () => {
+    wrapper.vm.clickEscapeLatex = jest.fn()
+    expect(wrapper.vm.inputText).toBe('')
+    wrapper.find('#btnEscapeLatex').trigger('click')
+    expect(wrapper.vm.clickEscapeLatex.mock.calls.length).toBe(1)
+  })
 })
 
 describe('store/mustUi.js', () => {
