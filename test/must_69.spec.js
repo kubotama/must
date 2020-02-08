@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import * as mustUi from '~/store/mustUi'
 import MustUi from '@/components/MustUi.vue'
 
@@ -29,7 +29,7 @@ describe('MustUi.vue', () => {
       }
     })
     wrapper = null
-    wrapper = shallowMount(MustUi, { store, localVue })
+    wrapper = mount(MustUi, { store, localVue })
   })
 
   test.each`

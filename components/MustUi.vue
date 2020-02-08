@@ -26,9 +26,9 @@
     </el-row>
     <el-row>
       <span class="language-label">LaTeX:</span>
-      <button id="btnEscapeLatex" @click="clickEscapeLatex()">
+      <el-button id="btnEscapeLatex" @click="clickEscapeLatex()">
         特殊文字の変換
-      </button>
+      </el-button>
     </el-row>
   </div>
 </template>
