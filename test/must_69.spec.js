@@ -21,6 +21,9 @@ describe('MustUi.vue', () => {
       namespaced: true,
       getters: {
         formattedText: () => ''
+      },
+      actions: {
+        updateText: jest.fn()
       }
     }
     store = new Vuex.Store({
@@ -40,12 +43,20 @@ describe('MustUi.vue', () => {
   `('$id: $elementIdが表示されている', ({ id, elementId }) => {
     expect(wrapper.find(elementId).isVisible()).toBeTruthy()
   })
-  test('click', () => {
+  test('clickしたメソッドの呼び出し', () => {
     wrapper.vm.clickEscapeLatex = jest.fn()
     expect(wrapper.vm.inputText).toBe('')
     wrapper.find('#btnEscapeLatex').trigger('click')
     expect(wrapper.vm.clickEscapeLatex.mock.calls.length).toBe(1)
     expect(wrapper.vm.clickEscapeLatex.mock.calls[0].length).toBe(0)
+  })
+
+  test('actions/updateTextの呼び出し', () => {
+    wrapper.setData({ inputText: 'abcde' })
+    wrapper.find('#btnEscapeLatex').trigger('click')
+    expect(storeMock.actions.updateText.mock.calls.length).toBe(1)
+    expect(storeMock.actions.updateText.mock.calls[0].length).toBe(2)
+    expect(storeMock.actions.updateText.mock.calls[0][1]).toBe('abcde')
   })
 })
 
