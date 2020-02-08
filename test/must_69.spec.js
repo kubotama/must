@@ -45,6 +45,7 @@ describe('MustUi.vue', () => {
     expect(wrapper.vm.inputText).toBe('')
     wrapper.find('#btnEscapeLatex').trigger('click')
     expect(wrapper.vm.clickEscapeLatex.mock.calls.length).toBe(1)
+    expect(wrapper.vm.clickEscapeLatex.mock.calls[0].length).toBe(0)
   })
 })
 
