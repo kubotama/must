@@ -36,9 +36,9 @@
 <script>
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-import Input from 'element-ui'
+import ElementUi from 'element-ui'
 
-Vue.use(Input)
+Vue.use(ElementUi)
 
 export default {
   name: 'MustUi',
