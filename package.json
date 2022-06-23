@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "element-ui": "^2.4.11",
     "http-status-codes": "^1.4.0",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
